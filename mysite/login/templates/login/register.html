@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'login/css/register.css' %}">
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {#    以下三者的引用顺序是固定的#}
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>注册</title>
+</head>
+<body>
+    <div class="container">
+            <div class="col">
+              <form class="form-register" action="/login/register/" method="post">
+                  {% csrf_token %}
+
+                  {% if register_form.captcha.errors %}
+                      <div class="alert alert-warning">{{ register_form.captcha.errors }}</div>
+                  {% elif message %}
+                      <div class="alert alert-warning">{{ message }}</div>
+                  {% endif %}
+                  <h3 class="text-center">欢迎注册</h3>
+                    <div class="form-group">
+                        {{ register_form.username.label }}
+                        {{ register_form.username }}
+                    </div>
+                    <div class="form-group">
+                        {{ register_form.password1.label }}
+                        {{ register_form.password1 }}
+                    </div>
+                    <div class="form-group">
+                        {{ register_form.password2.label }}
+                        {{ register_form.password2 }}
+                    </div>
+                    <div class="form-group">
+                        {{ register_form.email.label }}
+                        {{ register_form.email }}
+                    </div>
+                    <div class="form-group">
+                        {{ register_form.sex.label }}
+                        {{ register_form.sex }}
+                    </div>
+                    <div class="form-group">
+                        {{ register_form.captcha.label }}
+                        {{ register_form.captcha }}
+                    </div>
+                  <a href="/login/login/" class="text-success "><ins>直接登陆</ins></a>
+                  <button type="submit" class="btn btn-primary float-right">注册</button>
+                </div>
+              </form>
+            </div>
+    </div> <!-- /container -->
+
+
+</body>
+</html>
