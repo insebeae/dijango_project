@@ -94,7 +94,7 @@ def make_confirm_string(user):
     return code
 
 
-from mysite.settings import CONFIRM_DAYS, EMAIL_HOST_USER
+from mysite.settings.base import CONFIRM_DAYS, EMAIL_HOST_USER
 
 
 def send_email(email, code):
